@@ -18,18 +18,18 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
-	Barrel = BarrelToSet;
+	Barrel1 = BarrelToSet;
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	if (!Barrel)
+	if (!Barrel1)
 	{
 		return;
 	}
 
 	FVector OutLaunchVelocity;
-	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+	FVector StartLocation = Barrel1->GetSocketLocation(FName("Projectile"));
 
 	bool BHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity(
 		this,
@@ -60,9 +60,9 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
-	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto BarrelRotator = Barrel1->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotation = AimAsRotator - BarrelRotator;
 	
-	Barrel->Elevate(5);
+	Barrel1->Elevate(1);
 }

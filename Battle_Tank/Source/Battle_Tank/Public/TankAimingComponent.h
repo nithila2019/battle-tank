@@ -21,7 +21,7 @@ public:
 	void AimAt(FVector HitLocation,float LaunchSpeed);
 
 private:
-	UTankBarrel* Barrel = nullptr;
+	UTankBarrel* Barrel1 = nullptr;
 
 	void MoveBarrelTowards(FVector AimDirection);
 };
